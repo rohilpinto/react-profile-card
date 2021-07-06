@@ -3,9 +3,8 @@ import leftarrow from "./assets/left-arrow.svg";
 import rightarrow from "./assets/right-arrow.svg";
 import "./style/app.scss";
 
-const key = "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";
-
 function App() {
+  const key = "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";
   // this state is for the data
   const [data, setData] = useState(null);
   // const [loading, setLoading] = useState(false);
