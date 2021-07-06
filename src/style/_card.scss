@@ -14,6 +14,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  filter: drop-shadow(0px 0px 30px rgba(63, 63, 63, 0.315));
 }
 
 .inner-card {
@@ -22,18 +23,31 @@
   margin: 20px auto;
   height: calc(600px - 10%);
   border-radius: vr.$card-border-radius;
+
+  // border: 5px solid vr.$theme-color-2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
 
   .profile-img {
     width: 150px;
-
+    margin-top: 50px;
     border-radius: 50%;
+    filter: drop-shadow(0px 0px 10px rgba(63, 63, 63, 0.671));
+  }
+
+  .profile-name {
+    margin-top: 30px;
   }
 }
 
 // .disabled {
 //   display: none;
 // }
+
+@media screen and (max-width: 700px) {
+  .profile-name {
+    font-size: 2.5rem;
+  }
+}

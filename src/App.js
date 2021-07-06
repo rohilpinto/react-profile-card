@@ -1,84 +1,122 @@
 import React, { useEffect, useState } from "react";
-
+import leftarrow from "./assets/left-arrow.svg";
+import rightarrow from "./assets/right-arrow.svg";
 import "./style/app.scss";
 
-const key = "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";
+const key = "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";
 
 function App() {
-  const [data, setData] = useState([]);
+  // this state is for the data
+  const [data, setData] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  // this state is for the url
+  const [count, setCount] = useState(1);
 
-  let arrayOfApis = ["https://api.github.com/user/1", "https://api.github.com/user/2", "https://api.github.com/user/3", "https://api.github.com/user/4"];
+  useEffect(() => {
+    get(count);
+    console.log(count);
+  }, [count]);
 
-  const getusers = async () => {
+  const get = async (id) => {
     try {
-      const users = await Promise.all(
-        arrayOfApis.map((url) =>
-          fetch(url, {
-            headers: {
-              Authorization: `token ${key}`,
-            },
-          })
-        )
-      );
+      const response = await fetch(`https://api.github.com/user/${id}`, {
+        headers: {
+          Authorization: `token ${key}`,
+        },
+      });
 
-      const json = await Promise.all(users.map((res) => res.json()));
+      const json = await response.json();
 
       setData(json);
 
-      console.log(data);
+      console.log(json);
     } catch (err) {
       console.log(err);
     }
   };
 
-  useEffect(() => {
-    getusers();
-  }, []);
-
   return (
     <React.Fragment>
       <div className="container">
         <div className="card">
-          <Card data={data} setData={setData} />
+          <Card data={data} setData={setData} count={count} setCount={setCount} get={get} />
         </div>
       </div>
     </React.Fragment>
   );
 }
 
-const Card = ({ data, setData }) => {
-  // console.log(currentIndex);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
+const Card = ({ data, setData, count, setCount, get, loading }) => {
   return (
     <React.Fragment>
       <div className="inner-card">
-        <img src={data[currentIndex]?.avatar_url} alt={data[currentIndex]?.name} className="profile-img" />
-        <h1 className="profile-name">{data[currentIndex]?.name}</h1>
+        {data ? (
+          <React.Fragment>
+            <img src={data?.avatar_url} alt={data?.name} className="profile-img" />
+            <h1 className="profile-name">{data?.name}</h1>
+          </React.Fragment>
+        ) : (
+          <div className="lds-dual-ring"></div>
+        )}
       </div>
-      <Buttons currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
+      <Buttons count={count} setCount={setCount} get={get} />
     </React.Fragment>
   );
 };
 
-const Buttons = ({ currentIndex, setCurrentIndex }) => {
+const Buttons = ({ count, setCount, get }) => {
   const callPrev = () => {
-    if (currentIndex === 0) return;
-    setCurrentIndex(currentIndex - 1);
+    if (count <= 1) {
+      setCount(7);
+    } else {
+      setCount(count - 1);
+    }
   };
   const callNext = () => {
-    if (currentIndex === 4) return;
-    setCurrentIndex(currentIndex + 1);
+    if (count >= 7) {
+      setCount(1);
+      // get(count);
+    } else {
+      setCount(count + 1);
+    }
   };
 
   return (
     <React.Fragment>
       <div className="button-wrapper">
-        <button onClick={() => callPrev()}>Prev</button>
-        <button onClick={() => callNext()}>Next</button>
+        <button onClick={() => callPrev()}>
+          <img src={leftarrow} className="arrow arrow-left" alt="" />
+          Prev
+        </button>
+        <button onClick={() => callNext()}>
+          Next
+          <img src={rightarrow} className="arrow arrow-right" alt="" />
+        </button>
       </div>
     </React.Fragment>
   );
 };
 
 export default App;
+
+// const getusers = async () => {
+//   try {
+//     const users = await Promise.all(
+//       arrayOfApis.map((url) =>
+//         fetch(url, {
+//           headers: {
+//             Authorization: `token ${key}`,
+//           },
+//         })
+//       )
+//     );
+
+//     const json = await Promise.all(users.map((res) => res.json()));
+
+//     setData(json);
+
+//     console.log(data);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
