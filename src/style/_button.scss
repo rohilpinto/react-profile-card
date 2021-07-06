@@ -1,0 +1,23 @@
+@use './variable' as vr;
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  width: 100%;
+
+  button {
+    width: 100px;
+    margin: 10px;
+    color: white;
+    border-radius: vr.$card-border-radius;
+    border: none;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+
+    &:hover {
+      background: rgba(82, 81, 81, 0.6);
+    }
+  }
+}

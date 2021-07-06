@@ -1,0 +1,39 @@
+@use './variable' as vr;
+
+.card {
+  max-width: 600px;
+  width: 100%;
+  min-height: 600px;
+  padding: 10px;
+
+  background: vr.$primary-bg;
+  margin: auto;
+  border-radius: vr.$card-border-radius;
+  color: vr.$text-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-card {
+  // filter: blur(1);
+  width: 95%;
+  margin: 20px auto;
+  height: calc(600px - 10%);
+  border-radius: vr.$card-border-radius;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .profile-img {
+    width: 150px;
+
+    border-radius: 50%;
+  }
+}
+
+// .disabled {
+//   display: none;
+// }
