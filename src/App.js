@@ -4,7 +4,7 @@ import rightarrow from "./assets/right-arrow.svg";
 import "./style/app.scss";
 
 function App() {
-  const key = "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";
+  const key = "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";
   // this state is for the data
   const [data, setData] = useState(null);
   // const [loading, setLoading] = useState(false);
