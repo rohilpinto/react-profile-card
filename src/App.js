@@ -3,9 +3,13 @@ import leftarrow from "./assets/left-arrow.svg";
 import rightarrow from "./assets/right-arrow.svg";
 import "./style/app.scss";
 
+const KEY = process.env.REACT_APP_KEY;
+// console.log(process.env.REACT_APP_KEY);
 function App() {
-  const KEY = "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";
-  console.log(KEY);
+  // const KEY = "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";
+
+  // console.log(key);
+
   // this state is for the data
   const [data, setData] = useState(null);
   // const [loading, setLoading] = useState(false);
