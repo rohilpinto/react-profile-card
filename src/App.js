@@ -10,7 +10,7 @@ const KEY = process.env.REACT_APP_KEY;
 function App() {
   // this state is for the data
   const [data, setData] = useState(null);
-  // const [loading, setLoading] = useState(false);
+
   // this state is for the url
   const [count, setCount] = useState(1);
 
@@ -30,8 +30,6 @@ function App() {
       const json = await response.json();
 
       setData(json);
-
-      // console.log(json);
     } catch (err) {
       console.log(err);
     }
