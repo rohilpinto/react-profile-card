@@ -19,7 +19,7 @@ function App() {
 
   const get = async (id) => {
     try {
-      const response = await fetch(`https://api.github.com/user/${id}`, {
+      const response = await fetch(`http://api.github.com/user/${id}`, {
         headers: {
           Authorization: `token ${KEY}`,
         },
