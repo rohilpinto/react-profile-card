@@ -2,6 +2,7 @@
 
 .card {
   max-width: 600px;
+  min-width: 300px;
   width: 100%;
   min-height: 600px;
   padding: 10px;
@@ -21,7 +22,7 @@
   // filter: blur(1);
   width: 95%;
   margin: 20px auto;
-  height: calc(600px - 10%);
+  // height: calc(600px - 10%);
   border-radius: vr.$card-border-radius;
 
   // border: 5px solid vr.$theme-color-2;
