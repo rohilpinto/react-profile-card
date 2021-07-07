@@ -40,6 +40,35 @@
   .profile-name {
     margin-top: 30px;
   }
+
+  .links-container {
+    // border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .location-parent {
+    // border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .icon-outer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+  }
+
+  .github-parent {
+    // border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 // .disabled {
@@ -47,6 +76,11 @@
 // }
 
 @media screen and (max-width: 700px) {
+  .card {
+    min-height: 0;
+    height: auto;
+  }
+
   .profile-name {
     font-size: 2.5rem;
   }

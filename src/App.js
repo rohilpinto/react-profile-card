@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import leftarrow from "./assets/left-arrow.svg";
 import rightarrow from "./assets/right-arrow.svg";
+import location from "./assets/location.svg";
+import github from "./assets/github.png";
 import "./style/app.scss";
 
 const KEY = process.env.REACT_APP_KEY;
-// console.log(process.env.REACT_APP_KEY);
+
 function App() {
-  // const KEY = "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";
-
-  // console.log(key);
-
   // this state is for the data
   const [data, setData] = useState(null);
   // const [loading, setLoading] = useState(false);
@@ -18,7 +16,7 @@ function App() {
 
   useEffect(() => {
     get(count);
-    console.log(count);
+    // console.log(count);
   }, [count]);
 
   const get = async (id) => {
@@ -33,7 +31,7 @@ function App() {
 
       setData(json);
 
-      console.log(json);
+      // console.log(json);
     } catch (err) {
       console.log(err);
     }
@@ -58,6 +56,22 @@ const Card = ({ data, setData, count, setCount, get, loading }) => {
           <React.Fragment>
             <img src={data?.avatar_url} alt={data?.name} className="profile-img" />
             <h1 className="profile-name">{data?.name}</h1>
+
+            <div className="links-container">
+              <div className="location-parent">
+                <div className="icon-outer">
+                  <img src={location} alt="location" />
+                </div>
+
+                <div className="text-outer">{data?.location ?? "Not available"}</div>
+              </div>
+              <div className="github-parent">
+                <div className="icon-outer">
+                  <img src={github} alt="github" width="20" />
+                </div>
+                <div className="text-outer"> {data?.html_url}</div>
+              </div>
+            </div>
           </React.Fragment>
         ) : (
           <div className="lds-dual-ring"></div>
@@ -85,12 +99,22 @@ const Buttons = ({ count, setCount, get }) => {
     }
   };
 
+  const randomCount = () => {
+    // console.log("sjflaksj");
+    const randomNumber = Math.floor(Math.random() * 7 + 1);
+    setCount(randomNumber);
+    console.log("random numbers", randomNumber);
+  };
+
   return (
     <React.Fragment>
       <div className="button-wrapper">
         <button onClick={() => callPrev()}>
           <img src={leftarrow} className="arrow arrow-left" alt="" />
           Prev
+        </button>
+        <button onClick={randomCount} className="random">
+          Randomize
         </button>
         <button onClick={() => callNext()}>
           Next

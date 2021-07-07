@@ -7,6 +7,8 @@
   padding-bottom: 20px;
   width: 100%;
   border-radius: vr.$card-border-radius;
+  flex-wrap: wrap;
+
   button {
     width: 150px;
     margin: 10px;
@@ -29,6 +31,15 @@
       transform: scale(0.9);
     }
   }
+
+  .random {
+    background: rgb(223, 250, 70);
+    color: rgb(53, 53, 53);
+
+    &:hover {
+      background: rgb(219, 255, 14);
+    }
+  }
 }
 
 .arrow {
@@ -41,4 +52,19 @@
 
 .arrow-right {
   margin-left: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .button-wrapper {
+    flex-wrap: nowrap;
+    button {
+      padding: 10px;
+      width: auto;
+      font-size: 1.5rem;
+    }
+  }
+
+  .arrow {
+    width: 10px;
+  }
 }
