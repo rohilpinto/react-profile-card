@@ -4,7 +4,8 @@ import rightarrow from "./assets/right-arrow.svg";
 import "./style/app.scss";
 
 function App() {
-  const key = "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";
+  const KEY = "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";
+  console.log(KEY);
   // this state is for the data
   const [data, setData] = useState(null);
   // const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ function App() {
     try {
       const response = await fetch(`https://api.github.com/user/${id}`, {
         headers: {
-          Authorization: `token ${key}`,
+          Authorization: `token ${KEY}`,
         },
       });
 
